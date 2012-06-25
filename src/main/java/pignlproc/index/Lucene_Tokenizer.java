@@ -36,10 +36,16 @@ public class Lucene_Tokenizer extends EvalFunc<DataBag> {
     String field = "paragraph";
 
 
+    protected Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_30);
+    private TokenStream stream = null;
+
+    public Lucene_Tokenizer() throws  IOException {
+       stream = analyzer.reusableTokenStream(field, new StringReader(""));
+    }
+
     @Override
     public DataBag exec(Tuple input) throws IOException {
 
-            Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_30);
 
             DataBag out = bagFactory.newDefaultBag();
 
@@ -50,7 +56,7 @@ public class Lucene_Tokenizer extends EvalFunc<DataBag> {
                              + t0.getClass().getName());
              }
 
-            TokenStream stream = analyzer.tokenStream(field, new StringReader((String)t0));
+            stream = analyzer.reusableTokenStream(field, new StringReader((String)t0));
 
             try {
                 while (stream.incrementToken()) {
