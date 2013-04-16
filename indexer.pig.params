@@ -17,14 +17,14 @@ INVERTED_INDEX=/user/hadoop/input/inverted/es/es.tfidf_inverted_index.tsv
 MAX_SPAN_LENGTH=5000
 MIN_COUNT=2
 MIN_CONTEXTS=5
-N=250
+N=500
 #this constant is chosen based upon the calculated number of DBpediaResources(non-redirects)
 #ENGLISH
-#NUM_DOCS=7519283
+NUM_DOCS=7519283
 #SPANISH
 #NUM_DOCS=1307648
 #SPANISH - 2012-02-10 (for project with Bharath)
-NUM_DOCS=1271907
+#NUM_DOCS=1271907
 #PORTUGUESE
 #GERMAN
 #NUM_DOCS=2056544
